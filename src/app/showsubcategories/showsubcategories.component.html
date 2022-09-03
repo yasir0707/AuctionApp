@@ -1,0 +1,19 @@
+<h1 class="h3 mb-0 text-gray-800">Show Sub Categories</h1>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Sub Category Name</th>
+        <th scope="col">Sub Category Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of GetData">
+        <th scope="row">{{e._id}}</th>
+        <td>{{e.SubcategoryName}}</td>
+        <td><img src="http://localhost:7000/image/{{e.SubcategoryImage}}" width="100" height="100" ></td>
+        
+      </tr>
+      
+     </tbody>
+  </table>
