@@ -11,15 +11,28 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ShowcategoriesComponent } from './showcategories/showcategories.component';
 import { ShowsubcategoriesComponent } from './showsubcategories/showsubcategories.component';
 import { ShowproductComponent } from './showproduct/showproduct.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { IndexComponent } from './index/index.component';
+import { WinproductComponent } from './winproduct/winproduct.component';
 
 
 const routes: Routes = [
+  {path:'',component:AppComponent},
   
-  {path:'categories',component:CatogeriesComponent},
-  {path:'subCategories',component:SubCategoriesComponent},
-  {path:'product',component:ProductComponent},
-  {path:'showcategories',component:ShowcategoriesComponent},
-  {path:'showsubcategories',component:ShowsubcategoriesComponent},
+  {path:'home',component:IndexComponent ,children:[
+
+    {path:'categories',component:CatogeriesComponent},
+    {path:'subCategories',component:SubCategoriesComponent},
+    {path:'product',component:ProductComponent},
+    {path:'showcategories',component:ShowcategoriesComponent},
+    {path:'showsubcategories',component:ShowsubcategoriesComponent},
+    {path:'showproduct',component:ShowproductComponent},
+    {path:'winproduct',component:WinproductComponent},
+   
+  ]},
+  {path:"register",component:RegisterComponent},
+  {path:"login",component:LoginComponent},
 ]
 @NgModule({
   declarations: [
@@ -30,6 +43,10 @@ const routes: Routes = [
     ShowcategoriesComponent,
     ShowsubcategoriesComponent,
     ShowproductComponent,
+    LoginComponent,
+    RegisterComponent,
+    IndexComponent,
+    WinproductComponent
     
   ],
   imports: [

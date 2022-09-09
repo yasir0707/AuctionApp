@@ -42,7 +42,7 @@ export class SubCategoriesComponent implements OnInit {
     }
   }
   onSubmit(form: NgForm) {
-    console.log(form.value)
+    console.log(form.value,'form')
     
     const formData = new FormData();
 
@@ -53,9 +53,9 @@ export class SubCategoriesComponent implements OnInit {
         
       }
       formData.append('SubcategoryName',form.value.SubcategoryName);
-      formData.append('CategoryId',form.value.C_id);
+      formData.append('CategoryName',form.value.C_id);
       console.log(formData)
-      this._userService.AddSubCategories(formData).subscribe(
+      this._userService.AddSubCategoriesByName(formData).subscribe(
         (data)=>{
           if(data){
             console.log(data)

@@ -1,21 +1,52 @@
-<h1 class="h3 mb-0 text-gray-800">Add Sub Categories</h1>
+<h1 class="h3 mb-0 text-gray-800">Add Prduct</h1>
 
-<form #form="ngForm" (ngSubmit)="onSubmit(form)" enctype='multipart/form-data'>
+<form #form="ngForm"  (ngSubmit)="onSubmit(form)" enctype='multipart/form-data'>
     <div class="form-group">
-        <select class="form-control" id="exampleFormControlSelect1" ngModel name="C_id" #C_id}>
-            <option *ngFor="let e of GetData"  >
-                {{e._id}} 
-                
+        <select class="form-control" id="exampleFormControlSelect1" (change)="onSelect($event)"
+            name="C_id" #C_id}>
+            <option>-------Categories----------</option>
+            <option *ngFor="let e of GetData" value="{{e._id}}" >
+                {{e.CategoryName}}                 
          </option>
            
         </select>
       </div>
+      <div class="form-group">
+        <select class="form-control" id="exampleFormControlSelect1" (change)="onSubSelect($event)" 
+         name="C_Sub" #C_Sub}>
+         <option>-------Sub-Categories----------</option>
+            <option *ngFor="let e of GetSubcategoryData" value="{{e._id}}" >
+                {{e.SubcategoryName}}                 
+         </option>
+           
+        </select>
+      </div>
+
 <!--       
       <input type="text" value="{{e._id}}" ngModel name="C_id" #{{e._id}}>  -->
     <div class="form-group">
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="SubCategories name" ngModel name="SubcategoryName" #SubcategoryName>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Product Name" ngModel name="ProductName" #ProductName>
     </div>
- 
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Product Title" ngModel name="ProductTitle" #ProductTitle>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Product Description" ngModel name="ProductDesc" #ProductDesc>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Product Price" ngModel name="ProductPrice" #ProductPrice>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Product Quantity " ngModel name="Quantity" #Quantity>
+      </div>  
+       <div class="form-group">
+        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Carret Quantity" ngModel name="CarretQuantity" #CarretQuantity>
+      </div>  
+       <div class="form-group">
+        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Auction Time " ngModel name="Time" #Time>
+      </div>
+
     <div class="form-group">
         <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Select Image" name="file"   multiple (change)="selectMultiple($event)">
       </div>
@@ -25,7 +56,11 @@
     <div class="form-group">
   
         <button type="submit" class="btn btn-primary btn-user btn-block">
-            Add Sub Categories
+            Add Product
           </button> 
     </div>
   </form>
+
+  <div class="alert alert-primary" role="alert">
+{{ShowMsg}}
+  </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../Service/service.service';
 
 @Component({
   selector: 'app-showproduct',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowproductComponent implements OnInit {
 
-  constructor() { }
+  public GetData : any ; 
+  public GetSellerId = localStorage.getItem("SellerId");
+  constructor(
+    public _userService : ServiceService
+  ) { }
 
   ngOnInit(): void {
+    this._userService.ShowSellerProduct(this.GetSellerId).subscribe(
+      (data)=>{
+        if(data){
+          console.log(data);
+          this.GetData = data;
+        }
+        else{
+          
+        }
+      }
+    )
+ 
   }
 
 }
